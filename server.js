@@ -10,13 +10,14 @@ app.get("/blog", (req, res) => {
   res.send("Hello Blog my name is Sani ");
 });
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
-});
-
 mongoose
   .connect(
     "mongodb+srv://saiedsanibiderooni:v2ngvJkEfitgcsEO@cluster0.axojvav.mongodb.net/?appName=Cluster0",
   )
-  .then(() => console.log("Connected to MongoDB"))
+  .then(() => {
+    console.log("Connected to MongoDB");
+    app.listen(port, () => {
+      console.log(`Example app listening on port ${port}`);
+    });
+  })
   .catch((error) => console.log(error));
